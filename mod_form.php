@@ -28,6 +28,14 @@ require_once($CFG->dirroot . '/course/moodleform_mod.php');
 class mod_hvp_mod_form extends moodleform_mod {
 
     public function definition() {
+
+        // XTEC ************ AFEGIT - Block creation of HVP content
+        // 2022.03.24 @aginard
+        if (!get_protected_agora()) {
+            throw new \moodle_exception('hvpdisabled', 'local_agora');
+        }
+        // ************ FI
+
         global $CFG, $COURSE, $PAGE;
 
         $mform =& $this->_form;
